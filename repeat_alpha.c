@@ -1,38 +1,34 @@
 #include <unistd.h>
-#include <stdio.h>
 
-size_t ft_strlen(char *str) {
-	if (!str) {
-		return 0;
-	}
-
-	size_t i = 0;
-
-	while (str[i]) {
-		i++;
-	}
-	return i;
-}
-
+// repeat each character in the alphabet by it is index
 int main(int argc, char **argv) {
 	if (argc != 2) {
 		return 1;
 	}
 
-	size_t i = 0;
-	size_t length = ft_strlen(argv[i]);
+	int i = 0;
+	int j = 0;
+	int word_count = 1;
 
-	while (i < length) {
-		int j = 0;
-		if (argv[1][i] >= 97 && argv[1][i] <= 122) {
-			int word_count = argv[1][i] - 97 + 1;
-
-			// printf("%d\n", word_count);
+	while (argv[1][i]) {
+		j = 0;
+		if (argv[1][i] >= 'a' && argv[1][i] <= 'z') {
+			word_count = argv[1][i] - 'a' + 1;
 
 			while (j < word_count) {
 				write(1, &argv[1][i], 1);
 				j++;
 			}
+		} else if (argv[1][i] >= 'A' && argv[1][i] <= 'Z') {
+			word_count = argv[1][i] - 'A' + 1;
+
+			while (j < word_count) {
+				write(1, &argv[1][i], 1);
+				j++;
+			}
+		}
+		else {
+			write(1, &argv[1][i], 1);
 		}
 		i++;
 	}
