@@ -4,7 +4,7 @@
 typedef struct s_list
 {
     struct s_list *next;
-    void          *data;
+    void *data;
 } t_list;
 
 t_list *create_node(void *value)
